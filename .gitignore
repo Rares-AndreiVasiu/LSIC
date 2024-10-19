@@ -1,0 +1,35 @@
+# Ignore log files
+*.log
+
+# Remove assembly files
+*.asm
+
+# Remove jdi files
+*.jdi
+
+# Remove rpt files
+*.rpt
+
+# Remove summary files
+*.summary
+
+# Remove .sof files
+*.sof
+
+# Remove done files
+*.done 
+
+# Remove sld files
+*.sld
+
+# Remove .qsf files
+*.qsf
+
+# REmove .qpf files
+*.qpf
+
+# Remove .pin files
+*.pin
+
+# Remove .pof files
+*.pof
