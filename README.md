@@ -1,3 +1,6 @@
+# Hardware details
+- the fpga tested is DE10-LITE
+
 # HOW TO RUN
 1. Detect the board you have plugged into your computer
     1. quartus_pgm -l
