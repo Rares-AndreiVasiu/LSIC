@@ -22,21 +22,112 @@ set_location_assignment PIN_B14 -to pause;
 
 set_location_assignment PIN_F15 -to start;
 
-set_location_assignment PIN_A8 -to led[0]; # LED 0
+# led seconds right config
+set_location_assignment PIN_C14 -to led_seconds_right[0];
 
-set_location_assignment PIN_A9 -to led[1]; # LED 1
+set_location_assignment PIN_E15 -to led_seconds_right[1];
 
-set_location_assignment PIN_A10 -to led[2]; # LED 3
+set_location_assignment PIN_C15 -to led_seconds_right[2];
 
-set_location_assignment PIN_B10 -to led[3]; # LED 4
+set_location_assignment PIN_C16 -to led_seconds_right[3];
 
-set_location_assignment PIN_D13 -to led[4]; # LED 5
+set_location_assignment PIN_E16 -to led_seconds_right[4];
 
-set_location_assignment PIN_C13 -to led[5]; # LED 6
+set_location_assignment PIN_D17 -to led_seconds_right[5];
 
-set_location_assignment PIN_E14 -to led[6]; # LED 7
+set_location_assignment PIN_C17 -to led_seconds_right[6];
 
-set_location_assignment PIN_D14 -to led[7]; # LED 8
+set_location_assignment PIN_D15 -to led_seconds_right[7];
+
+# led seconds left config
+
+set_location_assignment PIN_C18 -to led_seconds_left[0];
+
+set_location_assignment PIN_D18 -to led_seconds_left[1];
+
+set_location_assignment PIN_E18 -to led_seconds_left[2];
+
+set_location_assignment PIN_B16 -to led_seconds_left[3];
+
+set_location_assignment PIN_A17 -to led_seconds_left[4];
+
+set_location_assignment PIN_A18 -to led_seconds_left[5];
+
+set_location_assignment PIN_B17 -to led_seconds_left[6];
+
+set_location_assignment PIN_B16 -to led_seconds_left[7];
+
+# led minutes right config
+
+set_location_assignment PIN_B20 -to led_minutes_right[0];
+
+set_location_assignment PIN_A20 -to led_minutes_right[1];
+
+set_location_assignment PIN_B19 -to led_minutes_right[2];
+
+set_location_assignment PIN_A21 -to led_minutes_right[3];
+
+set_location_assignment PIN_B21 -to led_minutes_right[4];
+
+set_location_assignment PIN_C22 -to led_minutes_right[5];
+
+set_location_assignment PIN_B22 -to led_minutes_right[6];
+
+set_location_assignment PIN_A19 -to led_minutes_right[7];
+
+# led minutes left config
+
+set_location_assignment PIN_F21 -to led_minutes_left[0];
+
+set_location_assignment PIN_E22 -to led_minutes_left[1];
+
+set_location_assignment PIN_E21 -to led_minutes_left[2];
+
+set_location_assignment PIN_C19 -to led_minutes_left[3];
+
+set_location_assignment PIN_C20 -to led_minutes_left[4];
+
+set_location_assignment PIN_D19 -to led_minutes_left[5];
+
+set_location_assignment PIN_E17 -to led_minutes_left[6];
+
+set_location_assignment PIN_D22 -to led_minutes_left[7];
+
+#led hours right config
+
+set_location_assignment PIN_F18 -to led_hours_right[0];
+
+set_location_assignment PIN_E20 -to led_hours_right[1];
+
+set_location_assignment PIN_E19 -to led_hours_right[2];
+
+set_location_assignment PIN_J18 -to led_hours_right[3];
+
+set_location_assignment PIN_H19 -to led_hours_right[4];
+
+set_location_assignment PIN_F19 -to led_hours_right[5];
+
+set_location_assignment PIN_F20 -to led_hours_right[6];
+
+set_location_assignment PIN_F17 -to led_hours_right[7];
+
+# led hours left config
+
+set_location_assignment PIN_J20 -to led_hours_left[0];
+
+set_location_assignment PIN_K20 -to led_hours_left[1];
+
+set_location_assignment PIN_L18 -to led_hours_left[2];
+
+set_location_assignment PIN_N18 -to led_hours_left[3];
+
+set_location_assignment PIN_M20 -to led_hours_left[4];
+
+set_location_assignment PIN_N19 -to led_hours_left[5];
+
+set_location_assignment PIN_N20 -to led_hours_left[6];
+
+set_location_assignment PIN_L19 -to led_hours_left[7];
 
 load_package flow
 

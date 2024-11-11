@@ -3,14 +3,14 @@ clk => clk.IN2
 rst => rst.IN2
 start => start.IN1
 pause => pause.IN1
-led[0] <= leds:inst_leds.led
-led[1] <= leds:inst_leds.led
-led[2] <= leds:inst_leds.led
-led[3] <= leds:inst_leds.led
-led[4] <= leds:inst_leds.led
-led[5] <= leds:inst_leds.led
-led[6] <= leds:inst_leds.led
-led[7] <= leds:inst_leds.led
+led[0] << leds:inst_leds.led
+led[1] << leds:inst_leds.led
+led[2] << leds:inst_leds.led
+led[3] << leds:inst_leds.led
+led[4] << leds:inst_leds.led
+led[5] << leds:inst_leds.led
+led[6] << leds:inst_leds.led
+led[7] << leds:inst_leds.led
 
 
 |watch|pulse:inst_pulse
