@@ -50,38 +50,7 @@ inst_fsm(
     
     .pulse(pulse),
     
-    .counter(count),
+    .pulse_1HZ(pulse_1s),
 );
 
-//time counter instance
-time_counter inst_time_counter (
-    .seconds_total(counter),   // Input from FSM counter
-    
-    .minutes_tens(minutes_tens),
-    
-    .minutes_units(minutes_units),
-    
-    .seconds_tens(seconds_tens),
-    
-    .seconds_units(seconds_units)
-);
-
-// 7-segment display driver instance
-time_to_7seg inst_time_to_7seg (
-    .minutes_tens(minutes_tens),
-
-    .minutes_units(minutes_units),
-    
-    .seconds_tens(seconds_tens),
-    
-    .seconds_units(seconds_units),
-    
-    .seg_minutes_tens(seg_minutes_tens),
-    
-    .seg_minutes_units(seg_minutes_units),
-    
-    .seg_seconds_tens(seg_seconds_tens),
-    
-    .seg_seconds_units(seg_seconds_units)
-);
 endmodule

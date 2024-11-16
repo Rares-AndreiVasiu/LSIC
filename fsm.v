@@ -4,10 +4,10 @@ module fsm (
     input pulse,
     input start,
     input pause,
-    output reg [7:0] counter
+    output pulse_1HZ
 );
 
-reg [7:0] counter_next;
+reg pulse_reg, pulse_next;
 reg [1:0] state_next, state_reg;
 
 localparam idle = 2'b00;
@@ -17,56 +17,58 @@ always
     @(posedge clk or negedge rst)
     begin
         if (!rst) 
-            begin
-                counter <= 0;
+        begin
+            pulse_reg <= 0;
 
-                state_reg <= idle;
-            end 
+            state_reg <= idle;
+        end 
         else 
-            begin
-                counter <= counter_next;
+        begin
+            pulse_reg <= pulse_next;
 
-                state_reg <= state_next;
-            end
+            state_reg <= state_next;
+        end
     end
 
-always
-    @(*) 
-    begin
+    always
+        @(*) 
+begin
+    pulse_next = pulse_reg;
 
-        counter_next = counter;
+    state_next = state_reg;
 
-        state_next = state_reg;
-
-        case (state_reg)
-            idle: 
-                begin
-                    if (start && !pause) 
-                        begin
-                            state_next = count;
-                        end
-                end
-
-            count: 
-                begin
-                    if (pause) 
-                        begin
-                            state_next = idle; 
-                        end 
-                    else 
-                        begin
-                            if (pulse) 
-                                begin
-                                    counter_next = counter + 1; 
-                                end
-                        end
-                end
-        default: 
+    case (state_reg)
+        idle: 
+        begin
+            if (start && !pause) 
+            begin
+                state_next = count;
+            end
+            else
             begin
                 state_next = idle;
             end
+        end
+
+        count: 
+        begin
+            if (pause) 
+            begin
+                state_next = idle; 
+            end 
+            else 
+            begin
+                pulse_next = pulse;
+            end
+        end
+        default: 
+        begin
+            state_next = idle;
+        end
     endcase
 end
+
+assign pulse_1HZ = pulse_reg;
 
 endmodule
 
