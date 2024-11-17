@@ -2,7 +2,40 @@
 	"partitions" : [
 		{
 			"name" : "Top",
-			"pins" : []
+			"pins" : [
+				{
+					"name" : "seg_seconds_units[2]",
+					"strict" : false
+				},
+				{
+					"name" : "seg_seconds_units[3]",
+					"strict" : false
+				},
+				{
+					"name" : "seg_seconds_units[4]",
+					"strict" : false
+				},
+				{
+					"name" : "seg_seconds_units[5]",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "rst",
+					"strict" : false
+				},
+				{
+					"name" : "pause",
+					"strict" : false
+				},
+				{
+					"name" : "start",
+					"strict" : false
+				}
+			]
 		}
 	]
 }

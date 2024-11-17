@@ -121,37 +121,37 @@ display_handler
 
         .d_units_minutes(d_um),
 
-        .a_tens_minutes(a_ts),
+        .a_tens_minutes(a_tm),
 
-        .b_tens_minutes(b_ts),
+        .b_tens_minutes(b_tm),
 
-        .c_tens_minutes(c_ts),
+        .c_tens_minutes(c_tm),
 
-        .d_tens_minutes(d_ts)
+        .d_tens_minutes(d_tm)
     );
 
 display7seg
     inst_display_units_seconds(
-        .a(a_units_seconds),
+        .a(a_us),
 
-        .b(b_units_seconds),
+        .b(b_us),
 
-        .c(c_units_seconds),
+        .c(c_us),
 
-        .d(d_units_seconds),
+        .d(d_us),
 
         .display7bit(display_units_second)
     );
 
 display7seg
     inst_display_tens_seconds(
-        .a(a_tens_seconds),
+        .a(a_ts),
 
-        .b(b_tens_seconds),
+        .b(b_ts),
 
-        .c(c_tens_seconds),
+        .c(c_ts),
 
-        .d(d_tens_seconds),
+        .d(d_ts),
 
         .display7bit(display_tens_second)
     );
@@ -159,26 +159,26 @@ display7seg
 
 display7seg
     inst_display_units_minutes(
-        .a(a_units_minutes),
+        .a(a_um),
 
-        .b(b_units_minutes),
+        .b(b_um),
 
-        .c(c_units_minutes),
+        .c(c_um),
 
-        .d(d_units_minutes),
+        .d(d_um),
 
         .display7bit(display_units_minutes)
     );
 
 display7seg
     inst_display_tens_minutes(
-        .a(a_tens_minutes),
+        .a(a_tm),
 
-        .b(b_tens_minutes),
+        .b(b_tm),
 
-        .c(c_tens_minutes),
+        .c(c_tm),
 
-        .d(d_tens_minutes),
+        .d(d_tm),
 
         .display7bit(display_tens_minutes)
     );
