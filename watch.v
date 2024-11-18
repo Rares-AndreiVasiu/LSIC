@@ -15,7 +15,7 @@ module watch
     output [7 : 0] seg_seconds_tens
 );
 
-wire pulse;
+wire pulse, pulse_fsm;
 
 wire [7 : 0] count;
 
@@ -67,7 +67,7 @@ inst_fsm(
     
     .pulse(pulse),
     
-    .pulse_1HZ(pulse_1s)
+    .pulse_1HZ(pulse_fsm)
 );
 
 time_handler 
@@ -76,7 +76,7 @@ time_handler
 
         .rst(rst),
 
-        .pulse(pulse_1s),
+        .pulse(pulse_fsm),
 
         .seconds_units(seconds_units),
 

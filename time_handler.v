@@ -98,7 +98,7 @@ end
 
 assign seconds_units = seconds_units_reg;
 
-assign second_tens = seconds_tens_reg;
+assign seconds_tens = seconds_tens_reg;
 
 assign minutes_units = minutes_units_reg;
 
