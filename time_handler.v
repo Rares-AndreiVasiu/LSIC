@@ -48,37 +48,36 @@ end
 
 
 always
-    @(*)
-begin
-    seconds_units_next = 0;
+    @(*) begin
+    seconds_units_next = seconds_units_reg;
+    
+    seconds_tens_next = seconds_tens_reg;
 
-    seconds_tens_next= 0;
+    minutes_tens_next = minutes_tens_reg;
 
-    minutes_units_next = 0;
-
-    minutes_tens_next = 0;
+    minutes_units_next = minutes_units_reg;
 
     if(pulse)
     begin
-        if(seconds_units_reg < 10) begin
-            seconds_units_next = seconds_units_next + 1;
+        if(seconds_units_reg < 9) begin
+            seconds_units_next = seconds_units_reg + 1;
         end
         else begin
             seconds_units_next = 0;
 
-            if(seconds_tens_reg < 6) begin
+            if(seconds_tens_reg < 5) begin
                 seconds_tens_next = seconds_tens_reg + 1;
             end
             else begin
                 seconds_tens_next = 0;
 
-                if(minutes_units_reg < 10) begin
+                if(minutes_units_reg < 9) begin
                     minutes_units_next = minutes_units_reg + 1;
                 end
                 else begin
                     minutes_units_next = 0;
 
-                    if(minutes_tens_reg < 6) begin
+                    if(minutes_tens_reg < 5) begin
                         minutes_tens_next = minutes_tens_reg + 1;
                     end
                     else begin

@@ -10,42 +10,37 @@ module display7seg(
     output [7 : 0] display7bit
 );
 
-reg h0;
+reg [7 : 0] segments;
 
-reg h1;
+always
+    @(a, b, c, d) begin
+        
+        case({a, b, c, d})
+            4'b0000: segments = 8'b11000000; // 0
 
-reg h2;
+            4'b0001: segments = 8'b11111001; // 1
 
-reg h3;
+            4'b0010: segments = 8'b10100100; // 2
 
-reg h4;
+            4'b0011: segments = 8'b10110000; // 3
 
-reg h5;
+            4'b0100: segments = 8'b10011001; // 4
 
-reg h6;
+            4'b0101: segments = 8'b10010010; // 5
 
-reg h7;
+            4'b0110: segments = 8'b10000010; // 6
 
-always 
-    @(*)
-begin
-    h0 = (~a) + (~b) * (~c);
+            4'b0111: segments = 8'b11111000; // 7
 
-    h1 = (~b) * (~c) + (~a) * (~b) + (~a) * c * d;
+            4'b1000: segments = 8'b10000000; // 8
 
-    h2 = (~a) * (~c) * (~d) + (~a) * c * d + (~a) * b + a * (~b) * (~c);
+            4'b1001: segments = 8'b10010000; // 9
 
-    h3 = (~a) * (~b) * (~d) + (~b) * c + (~a) * c * (~d);
-
-    h4 = (~b) * (~c) * (~d) + (~a) * c * (~d);
-
-    h5 = (~a) * (~c) * (~d) + (~a) * b * (~d) + (~a) * b * (~c) + a * (~b) * (~c);
-
-    h6 = (~b) + (~a) * b * (~d) + (~a) * b * (~c);
-
-    h7 = 1;
+            default:
+                segments = 8'b11111111;
+        endcase
 end
 
-assign display7bit = {h7, h6, h5, h4, h3, h2, h1, h0};
+assign display7bit = segments;
 
 endmodule

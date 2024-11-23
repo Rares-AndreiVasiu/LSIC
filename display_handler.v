@@ -40,64 +40,16 @@ module display_handler(
     output d_tens_minutes
 );
 
-reg a_us, b_us, c_us, d_us;
+assign {a_units_seconds, b_units_seconds, c_units_seconds,
+    d_units_seconds} = units_second;
 
-reg a_ts, b_ts, c_ts, d_ts;
+assign {a_tens_seconds, b_tens_seconds, c_tens_seconds, 
+    d_tens_seconds} = tens_second;
 
-reg a_um, b_um, c_um, d_um;
+assign {a_units_minutes, b_units_minutes, c_units_minutes, 
+    d_units_minutes} = units_minute;
 
-reg a_tm, b_tm, c_tm, d_tm;
-
-always
-    @(*)
-begin
-    // store the bits for the unit seconds
-    {a_us, b_us, c_us, d_us} = units_second;
-
-    // store the bits for the tens seconds
-    {a_ts, b_ts, c_ts, d_ts} = tens_second;
-
-    // store the bits for the unit minutes
-    {a_um, b_um, c_um, d_um} = units_minute;
-
-    // store the bits for the tens minutes
-    {a_tm, b_tm, c_tm, d_tm} = tens_minute;
-end
-
-// seconds units
-assign a_units_seconds = a_us;
-
-assign b_units_seconds = b_us;
-
-assign c_units_seconds = c_us;
-
-assign d_units_seconds = d_us;
-
-// seconds tens
-assign a_tens_seconds = a_ts;
-
-assign b_tens_seconds = b_ts;
-
-assign c_tens_seconds = c_ts;
-
-assign d_tens_seconds = d_ts;
-
-// minutes units
-assign a_units_minutes = a_um;
-
-assign b_units_minutes = b_um;
-
-assign c_units_minutes = c_um;
-
-assign d_units_minutes = d_um;
-
-// minutes tens
-assign a_tens_minutes = a_tm;
-
-assign b_tens_minutes = b_tm;
-
-assign c_tens_minutes = c_tm;
-
-assign d_tens_minutes = d_tm;
+assign {a_tens_minutes, b_tens_minutes, c_tens_minutes,
+    d_tens_minutes} = tens_minute;
 
 endmodule

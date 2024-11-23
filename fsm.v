@@ -11,7 +11,7 @@ reg pulse_reg, pulse_next;
 reg [1:0] state_next, state_reg;
 
 localparam idle = 2'b00;
-localparam count = 2'b01;
+localparam active = 2'b01;
 
 always 
     @(posedge clk or negedge rst)
@@ -30,40 +30,33 @@ always
         end
     end
 
-    always
-        @(*) 
-begin
-    pulse_next = pulse_reg;
+always
+    @(*) begin
 
     state_next = state_reg;
+
+    pulse_next = 0;
 
     case (state_reg)
         idle: 
         begin
-            if (start && !pause) 
+            if (start == 1 && pause == 0) 
             begin
-                state_next = count;
+                state_next = active;
             end
-            else
-            begin
-                state_next = idle;
-            end
+            pulse_next = 0;
         end
 
-        count: 
-        begin
-            if (pause) 
-            begin
-                state_next = idle; 
-            end 
-            else 
-            begin
+        active: begin
+            if(!start || pause) begin
+                state_next = idle;
+
+                pulse_next = 0;
+            end
+            else begin
+                state_next = active;
                 pulse_next = pulse;
             end
-        end
-        default: 
-        begin
-            state_next = idle;
         end
     endcase
 end

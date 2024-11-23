@@ -1,5 +1,5 @@
 
 State Machine - |watch|fsm:inst_fsm|state_reg
-Name state_reg.count 
+Name state_reg.active 
 state_reg.idle 0 
-state_reg.count 1 
+state_reg.active 1 
