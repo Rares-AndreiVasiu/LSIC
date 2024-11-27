@@ -10,8 +10,8 @@ module fsm (
 reg pulse_reg, pulse_next;
 reg [1:0] state_next, state_reg;
 
-localparam idle = 2'b00;
-localparam active = 2'b01;
+localparam IDLE   = 2'b00;
+localparam ACTIVE = 2'b01;
 
 always 
     @(posedge clk or negedge rst)
@@ -20,7 +20,7 @@ always
         begin
             pulse_reg <= 0;
 
-            state_reg <= idle;
+            state_reg <= IDLE;
         end 
         else 
         begin
@@ -38,23 +38,23 @@ always
     pulse_next = 0;
 
     case (state_reg)
-        idle: 
+        IDLE:
         begin
             if (start == 1 && pause == 0) 
             begin
-                state_next = active;
+                state_next = ACTIVE;
             end
             pulse_next = 0;
         end
 
-        active: begin
+        ACTIVE: begin
             if(!start || pause) begin
-                state_next = idle;
+                state_next = IDLE;
 
                 pulse_next = 0;
             end
             else begin
-                state_next = active;
+                state_next = ACTIVE;
                 pulse_next = pulse;
             end
         end

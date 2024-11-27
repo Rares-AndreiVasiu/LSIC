@@ -1,4 +1,6 @@
-module display7seg(
+module display7seg
+    #(parameter DISP = 8)
+(
     input a, 
 
     input b,
@@ -7,10 +9,10 @@ module display7seg(
 
     input d,
 
-    output [7 : 0] display7bit
+    output [DISP - 1 : 0] display7bit
 );
 
-reg [7 : 0] segments;
+reg [DISP - 1 : 0] segments;
 
 always
     @(a, b, c, d) begin

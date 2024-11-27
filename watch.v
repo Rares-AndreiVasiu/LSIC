@@ -5,6 +5,8 @@ module watch
     input start,
     
     input pause,
+
+    input restart, 
     
     output [7 : 0] seg_minutes_units,
     
@@ -15,25 +17,31 @@ module watch
     output [7 : 0] seg_seconds_tens
 );
 
+localparam SIZE = 4;
+
+localparam DISP = 8;
+
+localparam TIME_T = 9;
+
+localparam TIME_U = 5;
+
 wire pulse, pulse_fsm;
 
-wire [7 : 0] count;
+wire [SIZE - 1 : 0] minutes_tens;
 
-wire [3 : 0] minutes_tens;
+wire [SIZE -1 : 0] minutes_units;
 
-wire [3 : 0] minutes_units;
+wire [SIZE -1 : 0] seconds_tens;
 
-wire [3 : 0] seconds_tens;
+wire [SIZE -1 : 0] seconds_units;
 
-wire [3 : 0] seconds_units;
+wire [DISP - 1 : 0] display_units_second;
 
-wire [7 : 0] display_units_second;
+wire [DISP - 1 : 0] display_tens_second;
 
-wire [7 : 0] display_tens_second;
+wire [DISP - 1 : 0] display_units_minutes;
 
-wire [7 : 0] display_units_minutes;
-
-wire [7 : 0] display_tens_minutes;
+wire [DISP - 1 : 0] display_tens_minutes;
 
 wire a_us, b_us, c_us, d_us;
 
@@ -71,10 +79,14 @@ inst_fsm(
 );
 
 time_handler 
-    inst_time_handler(
+    #(.SIZE(SIZE),
+      .TIME_T(TIME_T),
+      .TIME_U(TIME_U))inst_time_handler(
         .clk(clk),
 
         .rst(rst),
+
+        .restart(restart),
 
         .pulse(pulse_fsm),
 
@@ -88,6 +100,7 @@ time_handler
     );
 
 display_handler
+    #(.SIZE(SIZE))
     inst_display_handler(
         .units_second(seconds_units),
 
@@ -131,7 +144,7 @@ display_handler
     );
 
 display7seg
-    inst_display_units_seconds(
+   #(.DISP(DISP)) inst_display_units_seconds(
         .a(a_us),
 
         .b(b_us),
@@ -144,7 +157,7 @@ display7seg
     );
 
 display7seg
-    inst_display_tens_seconds(
+    #(.DISP(DISP))inst_display_tens_seconds(
         .a(a_ts),
 
         .b(b_ts),
@@ -158,7 +171,7 @@ display7seg
 
 
 display7seg
-    inst_display_units_minutes(
+    #(.DISP(DISP))inst_display_units_minutes(
         .a(a_um),
 
         .b(b_um),
@@ -171,7 +184,7 @@ display7seg
     );
 
 display7seg
-    inst_display_tens_minutes(
+    #(.DISP(DISP))inst_display_tens_minutes(
         .a(a_tm),
 
         .b(b_tm),
@@ -188,7 +201,7 @@ assign seg_seconds_units = display_units_second;
 
 assign seg_seconds_tens = display_tens_second;
 
-assign seg_minutes_units = display_units_minutes;
+assign seg_minutes_units = {1'b0, display_units_minutes[6 : 0]};
 
 assign seg_minutes_tens = display_tens_minutes;
 

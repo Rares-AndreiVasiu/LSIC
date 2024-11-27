@@ -20,6 +20,8 @@ set_location_assignment PIN_P11 -to clk;
 
 set_location_assignment PIN_B8 -to rst; # PUSH BUTTON
 
+set_location_assignment PIN_C10 -to restart;
+
 set_location_assignment PIN_B14 -to pause;
 
 set_location_assignment PIN_F15 -to start;

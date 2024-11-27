@@ -1,11 +1,13 @@
-module display_handler(
-    input [3 : 0] units_second,
+module display_handler
+    #(parameter SIZE = 4)
+(
+    input [SIZE - 1 : 0] units_second,
     
-    input [3 : 0] tens_second,
+    input [SIZE - 1 : 0] tens_second,
 
-    input [3 : 0] units_minute,
+    input [SIZE - 1 : 0] units_minute,
 
-    input [3 : 0] tens_minute,
+    input [SIZE - 1 : 0] tens_minute,
 
     output a_units_seconds,
 
