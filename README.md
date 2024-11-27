@@ -10,4 +10,4 @@
     1. quartus_sh -t prj.tcl
 
 3. FPGA programing which downloads a binary *.sof file
-    1. quartus_pgm -m JTAG -o "p;cntled.sof@1"
+    1. quartus_pgm -m JTAG -o "p;watch.sof@1"
