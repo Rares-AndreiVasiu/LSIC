@@ -1,5 +1,0 @@
-
-State Machine - |watch|fsm:inst_fsm|state_reg
-Name state_reg.ACTIVE 
-state_reg.IDLE 0 
-state_reg.ACTIVE 1 

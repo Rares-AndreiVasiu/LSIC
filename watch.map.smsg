@@ -1,0 +1,1 @@
+Info (10281): Verilog HDL Declaration information at fsm.v(9): object "stop" differs only in case from object "STOP" in the same scope File: /home/rares/Dev/Verilog/LSIC/fsm.v Line: 9
