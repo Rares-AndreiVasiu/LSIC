@@ -9,6 +9,7 @@ set_global_assignment -name VERILOG_FILE pulse.v
 set_global_assignment -name VERILOG_FILE mem_prep.v
 set_global_assignment -name VERILOG_FILE watch.v
 set_global_assignment -name VERILOG_FILE led_manager.v
+set_global_assignment -name VERILOG_FILE neg_detect.v
 # set_global_assignment -name VERILOG_FILE fsm.v
 # set_global_assignment -name VERILOG_FILE display7seg.v
 # set_global_assignment -name VERILOG_FILE display_handler.v

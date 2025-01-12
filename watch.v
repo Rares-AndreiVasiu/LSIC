@@ -23,57 +23,56 @@ localparam TIME_T = 9;
 
 localparam TIME_U = 5;
 
-localparam MAX_ADDR = 8;
+localparam MAX_ADDR = 3;
 
 wire pulse, pulse_fsm;
 
-wire [SIZE - 1 : 0] minutes_tens;
-
-wire [SIZE -1 : 0] minutes_units;
-
-wire [SIZE -1 : 0] seconds_tens;
-
-wire [SIZE -1 : 0] seconds_units;
-
-wire [DISP - 1 : 0] display_units_second;
-
-wire [DISP - 1 : 0] display_tens_second;
-
-wire [DISP - 1 : 0] display_units_minutes;
-
-wire [DISP - 1 : 0] display_tens_minutes;
-
-wire a_us, b_us, c_us, d_us;
-
-wire a_ts, b_ts, c_ts, d_ts;
-
-wire a_um, b_um, c_um, d_um;
-
-wire a_tm, b_tm, c_tm, d_tm;
-
+// wire [SIZE - 1 : 0] minutes_tens;
+// 
+// wire [SIZE -1 : 0] minutes_units;
+// 
+// wire [SIZE -1 : 0] seconds_tens;
+// 
+// wire [SIZE -1 : 0] seconds_units;
+// 
+// wire [DISP - 1 : 0] display_units_second;
+// 
+// wire [DISP - 1 : 0] display_tens_second;
+// 
+// wire [DISP - 1 : 0] display_units_minutes;
+// 
+// wire [DISP - 1 : 0] display_tens_minutes;
+// 
+// wire a_us, b_us, c_us, d_us;
+// 
+// wire a_ts, b_ts, c_ts, d_ts;
+// 
+// wire a_um, b_um, c_um, d_um;
+// 
+// wire a_tm, b_tm, c_tm, d_tm;
+// 
 wire neg_sig;
 
-wire save;
+// wire save;
 
-wire stop;
+// wire stop;
 
-wire [SIZE - 1 : 0] units_second_saved;
+// wire [SIZE - 1 : 0] units_second_saved;
+// 
+// wire [SIZE - 1 : 0] tens_second_saved;
+// 
+// wire [SIZE - 1 : 0] units_minute_saved;
+// 
+// wire [SIZE - 1 : 0] tens_minute_saved;
 
-wire [SIZE - 1 : 0] tens_second_saved;
+// wire [7 : 0] opcode;
 
-wire [SIZE - 1 : 0] units_minute_saved;
+// wire we;
 
-wire [SIZE - 1 : 0] tens_minute_saved;
-
-wire [7 : 0] opcode;
-
-wire we;
-
-wire [7 : 0] addr;
+// wire [7 : 0] addr;
 
 wire ready;
 
-// pulse instace
 pulse
 inst_pulse(
     .clk(clk),
@@ -103,14 +102,14 @@ inst_led_manager(
     .leds(leds)
 );
 
-// neg_detect
-// inst_neg_detect(
-//     .clk(clk),
-//     .rst(rst),
-//     .sig(load),
-//     .neg_sig(neg_sig)
-// );
-// 
+neg_detect
+inst_neg_detect(
+     .clk(clk),
+     .rst(rst),
+     .sig(load),
+     .neg_sig(neg_sig)
+ );
+ 
 // mem_reader#(.MAX_ADDR(MAX_ADDR))
 // inst_mem_reader(
 //     .clk(clk),
