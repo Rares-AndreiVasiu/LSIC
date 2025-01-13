@@ -1,9 +1,17 @@
-module time_handler
-    #(parameter SIZE = 4, parameter TIME_U = 9, parameter TIME_T = 5)
+module time_handler #(parameter SIZE = 4,
+                      parameter TIME_U = 9,
+                      parameter TIME_T = 5,
+                      parameter LOAD_SIZE = 16 )
 (
-    input clk, rst,
+    input clk,
+
+    input rst,
 
     input pulse,
+    
+    input trigger,
+
+    input increment,
 
     input restart,
 
@@ -13,7 +21,11 @@ module time_handler
 
     output [SIZE - 1 : 0] minutes_units,
 
-    output [SIZE - 1 : 0] minutes_tens
+    output [SIZE - 1 : 0] minutes_tens,
+
+    output [LOAD_SIZE - 1 : 0] addr_in,
+
+    output [LOAD_SIZE - 1 : 0] data_in
 );
 
 reg [SIZE - 1 : 0] seconds_units_next, seconds_units_reg;
@@ -24,6 +36,9 @@ reg [SIZE - 1 : 0] minutes_units_next, minutes_units_reg;
 
 reg [SIZE - 1 : 0] minutes_tens_next, minutes_tens_reg;
 
+reg [LOAD_SIZE - 1 : 0] addr_in_reg, addr_in_next;
+
+reg [LOAD_SIZE - 1 : 0] data_in_sig;
 
 always
     @(posedge clk or negedge rst)
@@ -37,6 +52,8 @@ begin
         minutes_tens_reg <= 0;
 
         minutes_units_reg <= 0;
+
+        addr_in_reg <= 0;
     end
     else
     begin
@@ -47,6 +64,8 @@ begin
         minutes_units_reg <= minutes_units_next;
 
         minutes_tens_reg <= minutes_tens_next;
+
+        addr_in_reg <= addr_in_next;
     end
 end
 
@@ -61,6 +80,12 @@ always
 
         minutes_units_next = minutes_units_reg;
 
+        addr_in_next = addr_in_reg;        
+        
+        if(trigger) begin
+            addr_in_next = addr_in_reg + 1;
+        end
+
         if(restart) begin
             seconds_units_next = 0;
 
@@ -71,7 +96,7 @@ always
             minutes_tens_next = 0;
         end
         else begin
-            if(pulse)
+            if(increment)
             begin
                 if(seconds_units_reg < TIME_U) begin
                     seconds_units_next = seconds_units_reg + 1;
@@ -118,4 +143,7 @@ assign minutes_units = minutes_units_reg;
 
 assign minutes_tens = minutes_tens_reg;
 
+assign addr_in = addr_in_reg;
+
+assign data_in = {minutes_tens_reg, minutes_units_reg, seconds_tens_reg, seconds_units_reg};
 endmodule
