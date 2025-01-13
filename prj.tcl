@@ -16,7 +16,7 @@ set_global_assignment -name VERILOG_FILE neg_detect.v
 # set_global_assignment -name VERILOG_FILE time_handler.v
 # set_global_assignment -name VERILOG_FILE watch.v
 # set_global_assignment -name VERILOG_FILE rom.v
-# set_global_assignment -name VERILOG_FILE sram.v
+ set_global_assignment -name VERILOG_FILE sram.v
 # set_global_assignment -name VERILOG_FILE mem_reader.v
 # set_global_assignment -name SDC_FILE watch.sdc
 

@@ -102,14 +102,9 @@ inst_led_manager(
     .leds(leds)
 );
 
-neg_detect
-inst_neg_detect(
-     .clk(clk),
-     .rst(rst),
-     .sig(load),
-     .neg_sig(neg_sig)
- );
- 
+mem_reader
+inst_mem_reader(
+);
 // mem_reader#(.MAX_ADDR(MAX_ADDR))
 // inst_mem_reader(
 //     .clk(clk),

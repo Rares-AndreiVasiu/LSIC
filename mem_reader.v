@@ -1,4 +1,6 @@
-module mem_reader #(parameter MAX_ADDR = 3)
+module mem_reader #(parameter MAX_ADDR = 10,
+                    parameter DATA_SIZE = 32,
+                    parameter MAX_LOCATIONS = 1024)
 (
     input rst,
 
@@ -6,15 +8,8 @@ module mem_reader #(parameter MAX_ADDR = 3)
     
     input ready,
 
-    output [1 : 0] opcode
+    output [DATA_SIZE -1 : 0] data_out
 ); 
 
-reg [MAX_ADDR - 1 : 0] address;
-
-reg [1 : 0] data;
-
-sram #(.MAX_ADDR(MAX_ADDR))
-sram_inst(
-    .address(    
-);
+endmodule
 

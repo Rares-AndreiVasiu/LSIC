@@ -1,6 +1,6 @@
 |watch
-clk => clk.IN2
-rst => rst.IN3
+clk => clk.IN3
+rst => rst.IN4
 leds[0] <= led_manager:inst_led_manager.leds
 leds[1] <= led_manager:inst_led_manager.leds
 leds[2] <= led_manager:inst_led_manager.leds
@@ -124,5 +124,15 @@ leds[6] <= lights[6].DB_MAX_OUTPUT_PORT_TYPE
 leds[7] <= lights[7].DB_MAX_OUTPUT_PORT_TYPE
 leds[8] <= lights[8].DB_MAX_OUTPUT_PORT_TYPE
 leds[9] <= lights[9].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|watch|neg_detect:inst_neg_detect
+clk => neg_sig~reg0.CLK
+clk => signal_prev.CLK
+rst => neg_sig~reg0.ACLR
+rst => signal_prev.ACLR
+sig => signal_prev.DATAIN
+sig => neg_sig.IN1
+neg_sig <= neg_sig~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
